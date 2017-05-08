@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 public class BehaviorUnitTest {
     @Test
     public void applyTest() {
-        IBehaviorFunction func1 = (IBehaviorEntity entity, Object config) -> {return BehaviorResult.FALSE;};
+//        IBehaviorFunction func1 = (IBehaviorEntity entity, Object config) -> {return BehaviorResult.FALSE;};
 //        BehaviorUnit unit1 = new BehaviorUnit(func1, null);
 //        assertEquals(BehaviorResult.FALSE, unit1.apply(null));
 //
