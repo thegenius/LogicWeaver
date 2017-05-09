@@ -8,3 +8,12 @@
 |Sequnce  | A container which will run child nodes in sequence. It continues to run next child node when encounters continue result.|
 |Parallel | A container which will run all child nodes no matter what result got from child node.|
 
+## Basic Status
+|Status|Description|
+|------|-----------|
+|Init   |-|
+|Null   |-|
+|True   |-|
+|False  |-|
+|Discard|-|
+
