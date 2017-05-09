@@ -1,9 +1,0 @@
-dontinline,com/lvonce/benchmarks/generated/BehaviorSequence2Bench.*
-dontinline,com/lvonce/benchmarks/generated/BehaviorSequenceBench.*
-dontinline,com/lvonce/benchmarks/generated/BehaviorExecutorBench.*
-inline,com/lvonce/benchmarks/BehaviorExecutorBench.measure
-inline,com/lvonce/benchmarks/BehaviorSequence2Bench.measure
-inline,com/lvonce/benchmarks/BehaviorSequenceBench.measure
-inline,com/lvonce/benchmarks/BehaviorExecutorBench.measure
-inline,com/lvonce/benchmarks/BehaviorSequence2Bench.measure
-inline,com/lvonce/benchmarks/BehaviorSequenceBench.measure
