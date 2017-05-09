@@ -16,5 +16,5 @@
 |True   |-|
 |False  |-|
 |Discard|-|
-![](http://github.com/thegenius/LogicWeaver/blob/master/doc/status.jpg)
+![](http://github.com/thegenius/LogicWeaver/raw/master/doc/status.jpg)
 
