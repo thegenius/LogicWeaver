@@ -49,6 +49,18 @@ public class Person implements IBehaviorEntity {
     @BehaviorActionNode(index=2)
     public static IBehaviorAction<Person, PersonConfig> action2;
 
+    @BehaviorActionNode(index=3)
+    public static IBehaviorAction<Person, PersonConfig> action3;
+
+    @BehaviorActionNode(index=4)
+    public static IBehaviorAction<Person, PersonConfig> action3Appendix;
+
+    @BehaviorActionNode(index=5)
+    public static IBehaviorAction<Person, PersonConfig> action4;
+
+    @BehaviorActionNode(index=6)
+    public static IBehaviorAction<Person, PersonConfig> action4Appendix;
+
     static {
         action1 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
             System.out.println("this is action1");
@@ -57,6 +69,28 @@ public class Person implements IBehaviorEntity {
 
         action2 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
             System.out.println("this is action2");
+            return BehaviorResult.FALSE;
+        };
+
+        action3 =  (Person person, IBehaviorExecutor e, PersonConfig config)->{
+            BehaviorDebug.debug("Person action3(%s, %s)", config.x, config.y);
+            String somethingPass = "something pass";
+            e.setConfig(new PersonConfig(3, "action3 pass to action3Appendix"));
+            return action3Appendix;
+        };
+
+        action3Appendix = (Person person, IBehaviorExecutor e, PersonConfig config) -> {
+            BehaviorDebug.debug("Person action3() - appendix(%s, %s)", config.x, config.y);
+            return BehaviorResult.TRUE;
+        };
+
+        action4 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
+            BehaviorDebug.debug("Person action4(%s)", config);
+            return action4Appendix;
+        };
+
+        action4Appendix = (Person person, IBehaviorExecutor e, PersonConfig config)->{
+            BehaviorDebug.debug("Person action4() - appendix(%s)", config);
             return BehaviorResult.FALSE;
         };
     };
