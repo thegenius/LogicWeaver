@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="com.lvonce.interfaces.IBehaviorNodeTest" time="0.01" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="com.lvonce.interfaces.IBehaviorNodeTest" time="0.008" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/java/jdk1.8.0_131/jre/lib/amd64"/>
@@ -61,7 +61,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.lvonce.interfaces.IBehaviorNodeTest" name="testAndRank" time="0.01"/>
-  <testcase classname="com.lvonce.interfaces.IBehaviorNodeTest" name="testOrRank" time="0"/>
-  <testcase classname="com.lvonce.interfaces.IBehaviorNodeTest" name="testStatus" time="0"/>
+  <testcase classname="com.lvonce.interfaces.IBehaviorNodeTest" name="testAndRank" time="0.001"/>
+  <testcase classname="com.lvonce.interfaces.IBehaviorNodeTest" name="testBuild" time="0.003"/>
+  <testcase classname="com.lvonce.interfaces.IBehaviorNodeTest" name="testOrRank" time="0.002"/>
+  <testcase classname="com.lvonce.interfaces.IBehaviorNodeTest" name="testStatus" time="0.002"/>
 </testsuite>

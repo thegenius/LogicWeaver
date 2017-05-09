@@ -6,5 +6,7 @@
 /root/Behavior/LogicWeaver/src/test/java/com/lvonce/composites/BehaviorRandomChooserTest.java
 /root/Behavior/LogicWeaver/src/test/java/com/lvonce/composites/BehaviorSerialChooserTest.java
 /root/Behavior/LogicWeaver/src/test/java/com/lvonce/AppTest.java
+/root/Behavior/LogicWeaver/src/test/java/examples/PersonLogicTest.java
 /root/Behavior/LogicWeaver/src/test/java/com/lvonce/concepts/BehaviorMapTest.java
 /root/Behavior/LogicWeaver/src/test/java/com/lvonce/containers/BehaviorUnitTest.java
+/root/Behavior/LogicWeaver/src/test/java/examples/PersonTest.java

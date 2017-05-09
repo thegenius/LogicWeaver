@@ -1,8 +1,5 @@
 package com.lvonce;
 
-/**
- * Created by WangWei on 2017/3/9.
- */
 public class BehaviorDebug {
     public static int level = 0;
 

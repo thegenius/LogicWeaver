@@ -1,22 +1,15 @@
-package com.lvonce;
+package com.lvonce.examples;
 
+import com.lvonce.BehaviorDebug;
 import com.lvonce.concepts.BehaviorResult;
 import com.lvonce.interfaces.IBehaviorAction;
 import com.lvonce.interfaces.IBehaviorEntity;
 import com.lvonce.interfaces.IBehaviorExecutor;
-import com.lvonce.interfaces.IBehaviorFunction;
 import com.lvonce.annotations.BehaviorActionNode;
 
 
 public class Person implements IBehaviorEntity {
-    public class PersonConfig {
-        public int x = 23;
-        public String y = "hello config";
-        public void build(Object ...args) {
-            x = ((int)args[0]);
-            y = ((String)args[1]);
-        }
-    }
+
     @BehaviorActionNode(index=1)
     public static IBehaviorAction<Person, PersonConfig> action1;
 
@@ -42,31 +35,24 @@ public class Person implements IBehaviorEntity {
 
     static {
         action1 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
-            BehaviorDebug.debug("Person action1(%s)", config);
-            person.print();
-            BehaviorDebug.debug("action1 config:%s, %s", config.x, config.y);
+            BehaviorDebug.debug("action1(%s, %s)", config.x, config.y);
             return BehaviorResult.TRUE;
         };
 
         action2 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
-            BehaviorDebug.debug("Person action2(%s)", config);
+            BehaviorDebug.debug("action2(%s, %s)", config.x, config.y);
             return BehaviorResult.FALSE;
         };
 
         action3 =  (Person person, IBehaviorExecutor e, PersonConfig config)->{
-            BehaviorDebug.debug("Person action3(%s)", config);
+            BehaviorDebug.debug("Person action3(%s, %s)", config.x, config.y);
             String somethingPass = "something pass";
-            int x = 0;
-            IBehaviorAction<Person, PersonConfig> result = (Person person2, IBehaviorExecutor e2, PersonConfig config2) -> {
-                BehaviorDebug.debug("result action3() - appendix(%s)", config2);
-                BehaviorDebug.debug("pass:%s", somethingPass);
-                return BehaviorResult.TRUE;
-            };
-            return result;
+            e.setConfig(new PersonConfig(3, "action3 pass to action3Appendix"));
+            return action3Appendix;
         };
 
         action3Appendix = (Person person, IBehaviorExecutor e, PersonConfig config) -> {
-            BehaviorDebug.debug("Person action3() - appendix(%s)", config);
+            BehaviorDebug.debug("Person action3() - appendix(%s, %s)", config.x, config.y);
             return BehaviorResult.TRUE;
         };
 

@@ -1,7 +1,7 @@
 package com.lvonce.benchmarks;
 
-import com.lvonce.Person;
-import com.lvonce.PersonBehaviorDef;
+import com.lvonce.examples.Person;
+import com.lvonce.examples.PersonLogic;
 import com.lvonce.interfaces.IBehaviorNode;
 
 import org.openjdk.jmh.annotations.Scope;
@@ -21,7 +21,7 @@ public class BehaviorSequenceBench {
     @Setup
     public void prepare() {
         person = new Person();
-        IBehaviorNode behavior = PersonBehaviorDef.generate(person);
+        IBehaviorNode behavior = PersonLogic.getLogic();
     }
 
     @GenerateMicroBenchmark

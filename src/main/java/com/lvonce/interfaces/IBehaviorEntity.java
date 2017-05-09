@@ -15,16 +15,21 @@ public interface IBehaviorEntity {
             Mapper.register(entityClass);
             return new BehaviorNode( BehaviorList.getInstance(entityClass).get(func), config);
         }
-        public static<T> T genConfig(Class configClass, int x, String y) {
-            try {
-                Object obj = configClass.newInstance();
-                return ((T)obj);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            }
-            return null;
+        public static IBehaviorNode genSequence(Class entityClass, IBehaviorNode[] nodes, int continueResult) {
+            Mapper.register(entityClass);
+            return new BehaviorSequence(nodes, continueResult);
+        }
+        public static IBehaviorNode genSequence(Class entityClass, IBehaviorNode[] nodes, int continueResult, float[] weights, int chooseCount) {
+            Mapper.register(entityClass);
+            return new BehaviorSequence(nodes, continueResult, weights, chooseCount);
+        }
+        public static IBehaviorNode genParallel(Class entityClass, IBehaviorNode[] nodes, int priorityIndex) {
+            Mapper.register(entityClass);
+            return new BehaviorParallel(nodes, priorityIndex);
+        }
+        public static IBehaviorNode genParallel(Class entityClass, IBehaviorNode[] nodes, int priorityIndex, float[] weights, int chooseCount) {
+            Mapper.register(entityClass);
+            return new BehaviorParallel(nodes, priorityIndex, weights, chooseCount);
         }
     }
 

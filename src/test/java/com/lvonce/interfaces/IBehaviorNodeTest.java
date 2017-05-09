@@ -1,6 +1,9 @@
 package com.lvonce.interfaces;
 
 import org.junit.Test;
+
+import java.util.function.Function;
+
 import static org.junit.Assert.assertEquals;
 
 public class IBehaviorNodeTest {
@@ -10,16 +13,20 @@ public class IBehaviorNodeTest {
         assertEquals(-2, IBehaviorNode.RESULT.DISCARD.value);
         assertEquals(-3, IBehaviorNode.RESULT.TRUE.value);
         assertEquals(-4, IBehaviorNode.RESULT.FALSE.value);
+    }
 
+    @Test
+    public void testBuild() {
         assertEquals(IBehaviorNode.RESULT.NULL, IBehaviorNode.RESULT.build(-1));
         assertEquals(IBehaviorNode.RESULT.DISCARD, IBehaviorNode.RESULT.build(-2));
         assertEquals(IBehaviorNode.RESULT.TRUE, IBehaviorNode.RESULT.build(-3));
         assertEquals(IBehaviorNode.RESULT.FALSE, IBehaviorNode.RESULT.build(-4));
     }
 
+
     @Test
     public void testAndRank() {
-    
+
         assertEquals(IBehaviorNode.RESULT_PRIORITY.AND_PRIORITY.choose(IBehaviorNode.RESULT.NULL.value, IBehaviorNode.RESULT.TRUE.value), IBehaviorNode.RESULT.TRUE.value);
         assertEquals(IBehaviorNode.RESULT_PRIORITY.AND_PRIORITY.choose(IBehaviorNode.RESULT.NULL.value, IBehaviorNode.RESULT.FALSE.value), IBehaviorNode.RESULT.FALSE.value);
         assertEquals(IBehaviorNode.RESULT_PRIORITY.AND_PRIORITY.choose(IBehaviorNode.RESULT.NULL.value, IBehaviorNode.RESULT.NULL.value), IBehaviorNode.RESULT.NULL.value);

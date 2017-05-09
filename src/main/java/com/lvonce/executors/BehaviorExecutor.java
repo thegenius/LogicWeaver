@@ -7,6 +7,8 @@ import com.lvonce.interfaces.IBehaviorEntity;
 import com.lvonce.interfaces.IBehaviorExecutor;
 import com.lvonce.interfaces.IBehaviorFunction;
 
+import java.util.ArrayList;
+
 public class BehaviorExecutor implements IBehaviorExecutor {
 
     private final IBehaviorEntity entity;
@@ -14,17 +16,16 @@ public class BehaviorExecutor implements IBehaviorExecutor {
     private IBehaviorFunction work;
     private Object config;
     private STATUS status;
+    private ArrayList commandList; // for debug and test
 
     void recursiveBehaviorId(IBehaviorNode behavior) {
         if (!behavior.hasChildren()) {
-            BehaviorDebug.debug("bevaior %s id:%d", behavior, behavior.getId());
             return;
         }
         IBehaviorNode[] children = behavior.getChildren();
         for (IBehaviorNode child : children) {
             recursiveBehaviorId(child);
         }
-        BehaviorDebug.debug("bevaior %s id:%d",behavior, behavior.getId());
     }
 
     public BehaviorExecutor(IBehaviorEntity entity, IBehaviorNode behavior) {
@@ -33,7 +34,7 @@ public class BehaviorExecutor implements IBehaviorExecutor {
         this.work = null;
         this.config = null;
         this.status = STATUS.IDLE;
-
+        this.commandList = new ArrayList<Integer>();
         recursiveBehaviorId(behavior);
     }
 
@@ -52,9 +53,39 @@ public class BehaviorExecutor implements IBehaviorExecutor {
         this.config = config;
     }
 
+    public ArrayList<Integer> runDebug() {
+        commandList.clear();
+        this.status = STATUS.WORKING;
+        IBehaviorFunction command = this.work;
+        if (command == null) {
+            int index = behavior.now(this);
+            command = entity.getBehaviorFunc(index);
+            commandList.add(index);
+        } else {
+            this.work = null;
+            int index = entity.getBehaviorIndex(command);
+            commandList.add(index);
+        }
+
+        Object result = command.apply(entity, this, this.config);
+        while (result instanceof BehaviorResult) {
+            int index = behavior.next(this, RESULT.map((BehaviorResult) result).value);
+            if (IBehaviorNode.RESULT.isCommand(index)){
+                command = entity.getBehaviorFunc(index);
+                result = command.apply(entity, this, this.config);
+                commandList.add(index);
+            } else {
+                status = STATUS.FINISHED;
+                return ((ArrayList<Integer>)commandList.clone());
+            }
+        }
+        work = (IBehaviorFunction) result;
+        return ((ArrayList<Integer>)commandList.clone());
+    }
+
+
     @Override
     public void run() {
-        BehaviorDebug.debug("----------- executor run()");
         this.status = STATUS.WORKING;
         IBehaviorFunction command = this.work;
         if (command == null) {
@@ -78,10 +109,15 @@ public class BehaviorExecutor implements IBehaviorExecutor {
         work = (IBehaviorFunction) result;
     }
 
+    public ArrayList getCommandList() {
+        return commandList;
+    }
+
     @Override
     public void clear() {
         work = null;
         status = STATUS.IDLE;
         behavior.clear();
+        commandList.clear();
     }
 }

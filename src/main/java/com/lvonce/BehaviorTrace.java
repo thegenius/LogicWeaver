@@ -1,8 +1,5 @@
 package com.lvonce;
 
-/**
- * Created by wwn2162 on 2017/3/21.
- */
 public class BehaviorTrace {
         public static void printCallStatck() {
             Throwable ex = new Throwable();

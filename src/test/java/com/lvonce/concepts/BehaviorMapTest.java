@@ -1,7 +1,6 @@
 package com.lvonce.concepts;
 
 import com.lvonce.BehaviorDebug;
-import com.lvonce.BehaviorListConfig;
 import com.lvonce.annotations.BehaviorActionNode;
 import com.lvonce.interfaces.IBehaviorEntity;
 import com.lvonce.interfaces.IBehaviorFunction;
