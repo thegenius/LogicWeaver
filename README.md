@@ -18,7 +18,7 @@
 |True   |-|
 |False  |-|
 |Discard|-|
-![](https://github.com/thegenius/LogicWeaver/doc/status.jpg)
+![](https://github.com/thegenius/LogicWeaver/raw/master/doc/status.jpg)
 
 ## Basic API
 
