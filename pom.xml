@@ -2,11 +2,38 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.lvonce</groupId>
-  <artifactId>Behavior</artifactId>
+  <artifactId>logicweaver</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>Behavior</name>
+  <version>1.0.0</version>
+  <name>logicweaver</name>
   <url>http://maven.apache.org</url>
+
+	<parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+<licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <tag>master</tag>
+        <url>git@github.com:thegenius/LogicWeaver.git</url>
+        <connection>scm:git:git@github.com:thegenius/LogicWeaver.git</connection>
+        <developerConnection>scm:git:git@github.com:thegenius/LogicWeaver.git</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>WangWei</name>
+            <email>thegenius@vip.qq.com</email>
+            <organization>lvonce</organization>
+        </developer>
+    </developers>
 
   <properties>
 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
