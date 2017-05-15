@@ -23,7 +23,7 @@
 ## Basic API
 
 ## Examples
-Create a action config class
+### Step 1. Create a action config class
 ```java
 /*****************************************************************************************
 We strongly recommend that you set all the config attributes to final, and never change it.
@@ -40,7 +40,7 @@ public final class PersonConfig {
 }
 ```
 
-Create a entity with some actions
+### Step 2. Create a entity with some actions
 ```java
 import com.lvonce.concepts.BehaviorResult;
 import com.lvonce.interfaces.IBehaviorAction;
@@ -103,7 +103,7 @@ public class Person {
 }
 ```
 
-create logic definition class
+### Step 3. create logic definition class
 ```java
 import com.lvonce.interfaces.IBehaviorNode;
 import static com.lvonce.builders.BehaviorBuilder.*;
@@ -129,7 +129,7 @@ public final class PersonLogic {
 }
 ```
 
-create an executor to run the logic definition
+### Step 4. create an executor to run the logic definition
 ```java
 
 public class Main {
