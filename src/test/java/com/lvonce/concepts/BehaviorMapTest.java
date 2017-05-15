@@ -2,7 +2,6 @@ package com.lvonce.concepts;
 
 import com.lvonce.BehaviorDebug;
 import com.lvonce.annotations.BehaviorActionNode;
-import com.lvonce.interfaces.IBehaviorEntity;
 import com.lvonce.interfaces.IBehaviorFunction;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

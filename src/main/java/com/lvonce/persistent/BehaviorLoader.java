@@ -1,7 +1,6 @@
 package com.lvonce.persistent;
 
 import com.lvonce.BehaviorDebug;
-import com.lvonce.interfaces.IBehaviorEntity;
 import com.lvonce.interfaces.IBehaviorFunction;
 import com.lvonce.interfaces.IBehaviorNode;
 
@@ -20,7 +19,7 @@ public class BehaviorLoader {
         }
     }
 
-    public static IBehaviorNode load(IBehaviorEntity entity, String jsonString) {
+    public static IBehaviorNode load(Object entity, String jsonString) {
 //        try {
 //            JsonLoader.JsonValue value = JsonLoader.load(jsonString);
 //            return load(entity, value);
@@ -31,7 +30,7 @@ public class BehaviorLoader {
         return null;
     }
 
-    public static IBehaviorNode load (IBehaviorEntity entity, JsonLoader.JsonValue jsonValue) throws JsonLoader.UnknownTypeException, UnexpectedBehaviorType {
+    public static IBehaviorNode load (Object entity, JsonLoader.JsonValue jsonValue) throws JsonLoader.UnknownTypeException, UnexpectedBehaviorType {
         return null;
 //        if (jsonValue.type != JsonLoader.JsonValue.TYPE.OBJECT) {
 //            throw new UnexpectedBehaviorType("OBJECT", jsonValue.type.toString());

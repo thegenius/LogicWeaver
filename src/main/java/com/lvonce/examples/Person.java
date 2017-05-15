@@ -3,12 +3,11 @@ package com.lvonce.examples;
 import com.lvonce.BehaviorDebug;
 import com.lvonce.concepts.BehaviorResult;
 import com.lvonce.interfaces.IBehaviorAction;
-import com.lvonce.interfaces.IBehaviorEntity;
 import com.lvonce.interfaces.IBehaviorExecutor;
 import com.lvonce.annotations.BehaviorActionNode;
 
 
-public class Person implements IBehaviorEntity {
+public class Person {
 
     @BehaviorActionNode(index=1)
     public static IBehaviorAction<Person, PersonConfig> action1;
@@ -65,6 +64,5 @@ public class Person implements IBehaviorEntity {
             BehaviorDebug.debug("Person action4() - appendix(%s)", config);
             return BehaviorResult.FALSE;
         };
-
     };
 }

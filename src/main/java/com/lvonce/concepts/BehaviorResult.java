@@ -1,9 +1,6 @@
 package com.lvonce.concepts;
 
-import com.lvonce.interfaces.IBehaviorEntity;
-import com.lvonce.interfaces.IBehaviorExecutor;
 import com.lvonce.interfaces.IBehaviorResult;
-import com.lvonce.interfaces.IBehaviorFunction;
 
 public class BehaviorResult<R,T,U,S> implements IBehaviorResult<R,T,U,S> {
     public static final BehaviorResult NULL = new BehaviorResult(STATUS.NULL);

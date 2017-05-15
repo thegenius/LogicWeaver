@@ -3,12 +3,11 @@ package com.lvonce;
 import com.lvonce.BehaviorDebug;
 import com.lvonce.concepts.BehaviorResult;
 import com.lvonce.interfaces.IBehaviorAction;
-import com.lvonce.interfaces.IBehaviorEntity;
 import com.lvonce.interfaces.IBehaviorExecutor;
 import com.lvonce.interfaces.IBehaviorFunction;
 import com.lvonce.annotations.BehaviorActionNode;
 
-public class BehaviorEntityClass  implements IBehaviorEntity {
+public class BehaviorEntityClass  {
     public class BehaviorEntityClassConfig {
         public int x = 23;
         public String y = "hello config";

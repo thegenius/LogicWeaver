@@ -1,5 +1,8 @@
 package com.lvonce;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class BehaviorDebug {
     public static int level = 0;
 
@@ -24,6 +27,15 @@ public class BehaviorDebug {
         formatString = formatString.concat(format);
         formatString = formatString.concat(" -\n");
         System.out.printf(formatString, args);
+    }
+
+    public static void pause() {
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            reader.readLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void info(String format, Object ... args) {

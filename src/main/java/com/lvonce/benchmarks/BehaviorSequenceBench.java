@@ -21,7 +21,7 @@ public class BehaviorSequenceBench {
     @Setup
     public void prepare() {
         person = new Person();
-        IBehaviorNode behavior = PersonLogic.getLogic();
+        IBehaviorNode behavior = PersonLogic.logic;
     }
 
     @GenerateMicroBenchmark

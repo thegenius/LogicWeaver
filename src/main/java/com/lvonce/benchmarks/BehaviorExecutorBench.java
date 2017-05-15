@@ -3,7 +3,6 @@ package com.lvonce.benchmarks;
 import com.lvonce.BehaviorDebug;
 import com.lvonce.concepts.BehaviorResult;
 import com.lvonce.executors.BehaviorExecutor;
-import com.lvonce.interfaces.IBehaviorEntity;
 import com.lvonce.interfaces.IBehaviorExecutor;
 import com.lvonce.interfaces.IBehaviorFunction;
 import com.lvonce.interfaces.IBehaviorNode;

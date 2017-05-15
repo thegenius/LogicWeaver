@@ -3,7 +3,6 @@ package com.lvonce.persistent;
 import java.util.ArrayList;
 import java.math.BigDecimal;
 import com.lvonce.BehaviorDebug;
-import com.lvonce.interfaces.IBehaviorEntity;
 
 /**
  * Created by WangWei on 2017/3/16.

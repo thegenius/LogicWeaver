@@ -3,7 +3,6 @@ package com.lvonce.composites;
 import com.lvonce.concepts.BehaviorResult;
 import com.lvonce.interfaces.IBehaviorExecutor;
 import com.lvonce.interfaces.IBehaviorNode;
-import com.lvonce.interfaces.IBehaviorEntity;
 import com.lvonce.interfaces.IBehaviorFunction;
 
 
@@ -46,6 +45,11 @@ public class BehaviorCountDecorator implements IBehaviorNode {
     @Override
     public IBehaviorNode[] getChildren() {
         return unit.getChildren();
+    }
+
+    @Override
+    public IBehaviorNode getOriginNode() {
+        return unit;
     }
 
     public TYPE getType() {

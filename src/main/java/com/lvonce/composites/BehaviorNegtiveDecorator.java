@@ -2,7 +2,6 @@ package com.lvonce.composites;
 
 import com.lvonce.interfaces.IBehaviorExecutor;
 import com.lvonce.interfaces.IBehaviorNode;
-import com.lvonce.interfaces.IBehaviorEntity;
 import com.lvonce.interfaces.IBehaviorFunction;
 
 public class BehaviorNegtiveDecorator implements IBehaviorNode {
@@ -13,7 +12,7 @@ public class BehaviorNegtiveDecorator implements IBehaviorNode {
     }
 
 
-    public IBehaviorFunction apply(IBehaviorEntity entity, Object config) {
+    public IBehaviorFunction apply(Object entity, Object config) {
 //        IBehaviorFunction result = unit.apply(entity, config);
 //        if (result instanceof BehaviorResult) {
 //            if (((BehaviorResult) result).isTrue()) {
@@ -55,6 +54,11 @@ public class BehaviorNegtiveDecorator implements IBehaviorNode {
     @Override
     public int next(IBehaviorExecutor executor, int result) {
         return 0;
+    }
+
+    @Override
+    public IBehaviorNode getOriginNode() {
+        return unit;
     }
 
     @Override

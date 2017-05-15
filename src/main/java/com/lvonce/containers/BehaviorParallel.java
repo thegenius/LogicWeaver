@@ -37,6 +37,14 @@ public class BehaviorParallel implements IBehaviorNode {
         chooser = new BehaviorRandomChooser(weights, chooseCount);
     }
 
+    public BehaviorParallel(IBehaviorNode[] nodes, int priorityIndex, IBehaviorChooser chooser) {
+        assert priorityIndex >= 0 && priorityIndex < PRIORITY_MAP.length;
+        result = RESULT.NULL.value;
+        list = Arrays.copyOf(nodes, nodes.length);
+        resultPriority = PRIORITY_MAP[priorityIndex];
+        this.chooser = chooser;
+    }
+
     @Override
     public TYPE getType() {
         return TYPE.PARALLEL;

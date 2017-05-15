@@ -1,6 +1,5 @@
 package com.lvonce.concepts;
 
-import com.lvonce.interfaces.IBehaviorEntity;
 import org.junit.Test;
 import com.lvonce.interfaces.IBehaviorFunction;
 import com.lvonce.interfaces.IBehaviorStatus;

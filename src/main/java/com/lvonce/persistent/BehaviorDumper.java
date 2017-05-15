@@ -1,7 +1,6 @@
 package com.lvonce.persistent;
 
 import com.lvonce.BehaviorDebug;
-import com.lvonce.interfaces.IBehaviorEntity;
 import com.lvonce.interfaces.IBehaviorFunction;
 import com.lvonce.interfaces.IBehaviorNode;
 
@@ -9,7 +8,7 @@ import com.lvonce.interfaces.IBehaviorNode;
  * Created by WangWei on 2017/3/16.
  */
 public class BehaviorDumper {
-    public static String dump(IBehaviorEntity entity, IBehaviorNode unit) {
+    public static String dump(Object entity, IBehaviorNode unit) {
         /*
         IBehaviorUnit.TYPE type = unit.getType();
         BehaviorDebug.incLevel();

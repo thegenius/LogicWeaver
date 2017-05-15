@@ -27,6 +27,13 @@ public class BehaviorSequence implements IBehaviorNode {
         this.list = Arrays.copyOf(nodes, nodes.length);
     }
 
+    public BehaviorSequence(IBehaviorNode[] nodes, int continueResult, IBehaviorChooser chooser) {
+        this.chooser = chooser;
+        this.continueResult = continueResult;
+        this.list = Arrays.copyOf(nodes, nodes.length);
+    }
+
+
     @Override
     public TYPE getType() {
         return TYPE.SEQUENCE;

@@ -95,9 +95,14 @@ public interface IBehaviorNode {
         return true;
     }
 
-    default boolean defineCompleted() {
+    default IBehaviorNode defineFinish() {
         Carrier carrier = new Carrier();
-        return defineCompleted(this, carrier);
+        boolean success = defineCompleted(this, carrier);
+        if (success) {
+            return this;
+        } else {
+            return null;
+        }
     }
 
     boolean hasChildren();
@@ -113,4 +118,5 @@ public interface IBehaviorNode {
     default void clear(){};
 
     default IBehaviorContext genContext() {return null;};
+    default IBehaviorNode getOriginNode() {return this;}
 }

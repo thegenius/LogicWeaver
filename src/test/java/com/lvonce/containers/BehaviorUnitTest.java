@@ -1,7 +1,6 @@
 package com.lvonce.containers;
 
 import com.lvonce.concepts.BehaviorResult;
-import com.lvonce.interfaces.IBehaviorEntity;
 import com.lvonce.interfaces.IBehaviorFunction;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

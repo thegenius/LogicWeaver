@@ -1,25 +1,28 @@
 package com.lvonce.concepts;
 
 import java.util.HashMap;
-import com.lvonce.interfaces.IBehaviorEntity;
+
+import com.lvonce.BehaviorDebug;
 import com.lvonce.interfaces.IBehaviorFunction;
 
 public class BehaviorList {
     private static final HashMap<String, BehaviorList> globalMap = new HashMap<>();
+    private static final HashMap<IBehaviorFunction, Class> globalFuncClassMap = new HashMap<>();
     private final HashMap<Integer, IBehaviorFunction> indexFuncMap;
     private final HashMap<IBehaviorFunction, Integer> funcIndexMap;
 
-    public static BehaviorList getInstance(IBehaviorEntity obj) {
+    public static BehaviorList getInstance(Object obj) {
         String scope = obj.getClass().getName();
-        if (!globalMap.containsKey(scope)){
-            globalMap.put(scope, new BehaviorList());
-            obj.registerBehaviorFunctionList();
-        }
-        return globalMap.get(scope);
+        return getInstance(scope);
     }
 
     public static BehaviorList getInstance(Class clazz) {
         String scope = clazz.getName();
+        return getInstance(scope);
+    }
+
+    public static BehaviorList getInstance(String className) {
+        String scope = className;
         if (!globalMap.containsKey(scope)){
             globalMap.put(scope, new BehaviorList());
         }
@@ -36,11 +39,15 @@ public class BehaviorList {
         funcIndexMap = new HashMap();
     };
 
-    public void register(Integer index, IBehaviorFunction function) {
+    public void register(Class clazz, IBehaviorFunction function, Integer index) {
+        globalFuncClassMap.put(function, clazz);
         indexFuncMap.put(index, function);
         funcIndexMap.put(function, index);
     }
 
+    public static Class getFuncOwnerClass(IBehaviorFunction function) {
+        return globalFuncClassMap.get(function);
+    }
     public boolean has(Integer index) {
         return indexFuncMap.containsKey(index);
     }
