@@ -7,11 +7,11 @@
 ```xml
 <dependencies>
 	<dependency>
-      <groupId>com.lvonce</groupId>
-      <artifactId>logicweaver</artifactId>
-      <version>1.0.0</version>
-    </dependency>
-<dependencies>
+		<groupId>com.lvonce</groupId>
+		<artifactId>logicweaver</artifactId>
+		<version>1.0.0</version>
+	</dependency>
+</dependencies>
 ```
 
 ## Examples
