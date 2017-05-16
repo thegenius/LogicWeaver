@@ -24,120 +24,70 @@
 ## Basic API
 
 ## Examples
-### Step 1. Create a action config class
+### Step 1. create action config 
+### Step 2. create entity action
+### Step 3. create entity logic
+### Step 4. create executor and run
 ```java
-/*****************************************************************************************
-We strongly recommend that you set all the config attributes to final, and never change it.
-If you wanna something that will change, store it in entity attributes.
- *****************************************************************************************/
-public final class PersonConfig {
-    public final int x;
-    public final String y;
+import com.lvonce.logicweaver.BehaviorDebug;
+import com.lvonce.logicweaver.concepts.BehaviorResult;
+import com.lvonce.logicweaver.interfaces.IBehaviorNode;
+import com.lvonce.logicweaver.interfaces.IBehaviorAction;
+import com.lvonce.logicweaver.interfaces.IBehaviorExecutor;
+import com.lvonce.logicweaver.executors.BehaviorExecutor;
+import com.lvonce.logicweaver.annotations.BehaviorActionNode;
+import static com.lvonce.logicweaver.builders.BehaviorBuilder.*;
 
-    public PersonConfig(int x, String y) {
-        this.x = x;
-        this.y = y;
+public class App {
+
+	static class PersonConfig {
+		public final int x;
+    	public final String y;
+    	public PersonConfig(int x, String y) {
+        	this.x = x;
+        	this.y = y;
+		}
     }
-}
-```
 
-### Step 2. Create a entity with some actions
-```java
-import com.lvonce.concepts.BehaviorResult;
-import com.lvonce.interfaces.IBehaviorAction;
-import com.lvonce.interfaces.IBehaviorExecutor;
-import com.lvonce.annotations.BehaviorActionNode;
+	static class Person {
 
-public class Person {
+    	@BehaviorActionNode(index=1)
+    	public static IBehaviorAction<Person, PersonConfig> action1;
 
-    @BehaviorActionNode(index=1)
-    public static IBehaviorAction<Person, PersonConfig> action1;
+    	@BehaviorActionNode(index=2)
+    	public static IBehaviorAction<Person, PersonConfig> action2;
 
-    @BehaviorActionNode(index=2)
-    public static IBehaviorAction<Person, PersonConfig> action2;
+    	static {
+        	action1 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
+        	    BehaviorDebug.debug("action1(%s, %s)", config.x, config.y);
+            	return BehaviorResult.TRUE;
+        	};
 
-    @BehaviorActionNode(index=3)
-    public static IBehaviorAction<Person, PersonConfig> action3;
-
-    @BehaviorActionNode(index=4)
-    public static IBehaviorAction<Person, PersonConfig> action3Appendix;
-
-    @BehaviorActionNode(index=5)
-    public static IBehaviorAction<Person, PersonConfig> action4;
-
-    @BehaviorActionNode(index=6)
-    public static IBehaviorAction<Person, PersonConfig> action4Appendix;
-
-    static {
-        action1 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
-            System.out.println("this is action1");
-            return BehaviorResult.TRUE;
-        };
-
-        action2 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
-            System.out.println("this is action2");
-            return BehaviorResult.FALSE;
-        };
-
-        action3 =  (Person person, IBehaviorExecutor e, PersonConfig config)->{
-            BehaviorDebug.debug("Person action3(%s, %s)", config.x, config.y);
-            String somethingPass = "something pass";
-            e.setConfig(new PersonConfig(3, "action3 pass to action3Appendix"));
-            return action3Appendix;
-        };
-
-        action3Appendix = (Person person, IBehaviorExecutor e, PersonConfig config) -> {
-            BehaviorDebug.debug("Person action3() - appendix(%s, %s)", config.x, config.y);
-            return BehaviorResult.TRUE;
-        };
-
-        action4 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
-            BehaviorDebug.debug("Person action4(%s)", config);
-            return action4Appendix;
-        };
-
-        action4Appendix = (Person person, IBehaviorExecutor e, PersonConfig config)->{
-            BehaviorDebug.debug("Person action4() - appendix(%s)", config);
-            return BehaviorResult.FALSE;
-        };
-    };
-}
-```
-
-### Step 3. create logic definition class
-```java
-import com.lvonce.interfaces.IBehaviorNode;
-import static com.lvonce.builders.BehaviorBuilder.*;
-/*****************************************************
-*                          sequence
-*                sequence            parallel
-*                1  2  3             4  5  6
-*****************************************************/
-public final class PersonLogic {
-    public static final IBehaviorNode logic = defineStart(Person.class)
+        	action2 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
+            	BehaviorDebug.debug("action2(%s, %s)", config.x, config.y);
+            	return BehaviorResult.FALSE;
+        	};
+		}
+	}
+	
+	static final IBehaviorNode logic = defineStart(Person.class)
         .genSequenceFalse(
                 genSequenceTrue(
                         genNode(Person.action1, new PersonConfig(1, "config1")),
                         genNode(Person.action2, new PersonConfig(1, "config1")),
-                        genNode(Person.action3, new PersonConfig(1, "config1"))
+                        genNode(Person.action1, new PersonConfig(1, "config1"))
                 ),
                 genParallelAnd(
-                        genNode(Person.action3Appendix, new PersonConfig(1, "config1")),
-                        genNode(Person.action4, new PersonConfig(1, "config1")),
-                        genNode(Person.action4Appendix, new PersonConfig(1, "config1"))
+                        genNode(Person.action1, new PersonConfig(1, "config1")),
+                        genNode(Person.action2, new PersonConfig(1, "config1")),
+                        genNode(Person.action1, new PersonConfig(1, "config1"))
                 )
         ).defineFinish();
-}
-```
 
-### Step 4. create an executor to run the logic definition
-```java
-
-public class Main {
-    public static void main(String[] args) {
-        Person entity = new Person();
-        BehaviorExecutor executor = new BehaviorExecutor(entity, PersonLogic.logic);
-        executor.run();
+    public static void main( String[] args ) {
+			Person person = new Person();
+            BehaviorExecutor executor = new BehaviorExecutor(person, logic);
+            executor.run();
     }
 }
 ```
