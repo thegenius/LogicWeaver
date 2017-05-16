@@ -91,18 +91,14 @@ public class App {
 }
 ```
 
-## Basic Concepts
+## Design Concepts
 ![containers](https://raw.githubusercontent.com/thegenius/LogicWeaver/master/docs/containers.png)
-|Concepts|Description|
-|---------|-----------|
-|Container| A list that contains many child nodes.|
-|Sequnce  | A container which will run child nodes in sequence. It continues to run next child node when encounters continue result.|
-|Parallel | A container which will run all child nodes no matter what result got from child node.|
 
-## Basic Status
+## Node Status
 |Status|Description|
 |------|-----------|
 |Init   |with no result|
+|Waiting|result is a task, run the task will get the actual result|
 |Null   |result is meaningless, just ignore it|
 |True   |resutl is success|
 |False  |result is fail|
