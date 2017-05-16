@@ -3,25 +3,16 @@
 [![codecov](https://codecov.io/gh/thegenius/LogicWeaver/branch/master/graph/badge.svg)](https://codecov.io/gh/thegenius/LogicWeaver)
 ![](https://img.shields.io/badge/maven-1.0.0-green.svg)
 
-
-## Basic Concepts
-|Concepts|Description|
-|---------|-----------|
-|Container| A list that contains many child nodes.|
-|Sequnce  | A container which will run child nodes in sequence. It continues to run next child node when encounters continue result.|
-|Parallel | A container which will run all child nodes no matter what result got from child node.|
-
-## Basic Status
-|Status|Description|
-|------|-----------|
-|Init   |-|
-|Null   |-|
-|True   |-|
-|False  |-|
-|Discard|-|  
-
-
-## Basic API
+## Setup with maven
+```xml
+<dependencies>
+	<dependency>
+      <groupId>com.lvonce</groupId>
+      <artifactId>logicweaver</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+<dependencies>
+```
 
 ## Examples
 ### Step 1. create action config 
@@ -91,3 +82,22 @@ public class App {
     }
 }
 ```
+
+## Basic API
+## Basic Concepts
+|Concepts|Description|
+|---------|-----------|
+|Container| A list that contains many child nodes.|
+|Sequnce  | A container which will run child nodes in sequence. It continues to run next child node when encounters continue result.|
+|Parallel | A container which will run all child nodes no matter what result got from child node.|
+
+## Basic Status
+|Status|Description|
+|------|-----------|
+|Init   |-|
+|Null   |-|
+|True   |-|
+|False  |-|
+|Discard|-|  
+
+
