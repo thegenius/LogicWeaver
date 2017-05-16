@@ -17,10 +17,8 @@
 ```
 
 ## Examples
-#### Step 1. create action config 
-#### Step 2. create entity action
-#### Step 3. create entity logic
-#### Step 4. create executor and run
+#### config -> action -> logic -> executor
+
 ```java
 import com.lvonce.logicweaver.BehaviorDebug;
 import com.lvonce.logicweaver.concepts.BehaviorResult;
