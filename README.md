@@ -4,6 +4,11 @@
 [![maven-central](https://img.shields.io/badge/maven-1.0.0-green.svg)](http://search.maven.org/#search%7Cga%7C1%7Clogicweaver)
 [![apache-license](https://img.shields.io/badge/license-Apache--2.0-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
+## Inspiration
+Inspired by behavior tree.  
+Used as behavior tree.  
+And more than behavior tree.  
+Make everybody happy.
 
 ## Setup with maven
 ```xml
