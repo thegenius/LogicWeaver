@@ -91,8 +91,8 @@ public class App {
 }
 ```
 
-## Basic API
 ## Basic Concepts
+![containers](https://raw.githubusercontent.com/thegenius/LogicWeaver/master/docs/containers.png)
 |Concepts|Description|
 |---------|-----------|
 |Container| A list that contains many child nodes.|
@@ -102,15 +102,13 @@ public class App {
 ## Basic Status
 |Status|Description|
 |------|-----------|
-|Init   |-|
-|Null   |-|
-|True   |-|
-|False  |-|
-|Discard|-|  
-
+|Init   |with no result|
+|Null   |result is meaningless, just ignore it|
+|True   |resutl is success|
+|False  |result is fail|
+|Discard|result is fatal error, discard and restart|  
 
 ![status](https://raw.githubusercontent.com/thegenius/LogicWeaver/master/docs/status.jpg)
 
-## Containers
 
-![containers](https://raw.githubusercontent.com/thegenius/LogicWeaver/master/docs/containers.png)
+## Basic API
