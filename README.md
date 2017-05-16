@@ -5,10 +5,13 @@
 [![apache-license](https://img.shields.io/badge/license-Apache--2.0-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 ## Inspiration
-Inspired by behavior tree.  
-Used as behavior tree.  
-And more than behavior tree.  
-Make everybody happy.
+INSPIRED BY   BEHAVIOR  TREE.  
+USED     AS   BEHAVIOR  TREE.  
+MORE     THAN BEHAVIOR  TREE.  
+AND      MAKE EVERYBODY HAPPY.  
+
+  
+The most tedious part of software development must be the implementation of bussiness logic. Engineers used to waste a lot of time on those if-else logic. There must be a new way to accomplish those task. This framework aims at providing a visual and editable way to write those logic code. I call it "logic weaver".
 
 ## Setup with maven
 ```xml
