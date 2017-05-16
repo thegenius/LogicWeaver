@@ -103,3 +103,4 @@ public class App {
 |Discard|-|  
 
 
+![status](https://raw.githubusercontent.com/thegenius/LogicWeaver/master/docs/status.jpg)
