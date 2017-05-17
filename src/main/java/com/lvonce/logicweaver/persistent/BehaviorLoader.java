@@ -1,6 +1,6 @@
 package com.lvonce.logicweaver.persistent;
 
-import com.lvonce.logicweaver.interfaces.IBehaviorNode;
+import com.lvonce.logicweaver.interfaces.ILogicNode;
 
 /**
  * Created by WangWei on 2017/3/15.
@@ -15,7 +15,7 @@ public class BehaviorLoader {
         }
     }
 
-    public static IBehaviorNode load(Object entity, String jsonString) {
+    public static ILogicNode load(Object entity, String jsonString) {
 //        try {
 //            JsonLoader.JsonValue value = JsonLoader.load(jsonString);
 //            return load(entity, value);
@@ -26,7 +26,7 @@ public class BehaviorLoader {
         return null;
     }
 
-    public static IBehaviorNode load (Object entity, JsonLoader.JsonValue jsonValue) throws JsonLoader.UnknownTypeException, UnexpectedBehaviorType {
+    public static ILogicNode load (Object entity, JsonLoader.JsonValue jsonValue) throws JsonLoader.UnknownTypeException, UnexpectedBehaviorType {
         return null;
 //        if (jsonValue.type != JsonLoader.JsonValue.TYPE.OBJECT) {
 //            throw new UnexpectedBehaviorType("OBJECT", jsonValue.type.toString());
@@ -35,16 +35,16 @@ public class BehaviorLoader {
 //        // temp variable to store
 //        JsonLoader.JsonPair[] pairs = (JsonLoader.JsonPair[]) jsonValue.list;
 //        JsonLoader.JsonObject jsonObj = (JsonLoader.JsonObject) jsonValue.value;
-//        IBehaviorNode.TYPE type = IBehaviorNode.TYPE.UNKNOWN;
+//        ILogicNode.TYPE type = ILogicNode.TYPE.UNKNOWN;
 //        String func = "";
 //        Object[] list = null;
 //        Object config = null;
 //
 //        JsonLoader.JsonValue result;
 //        for (JsonLoader.JsonPair pair : pairs) {
-//            BehaviorDebug.debug("pair %s :%s", pair.key, pair.value);
+//            LogicDebug.debug("pair %s :%s", pair.key, pair.value);
 //            if (pair.key.equals("type")) {
-//                BehaviorDebug.debug("pair %s :%s", pair.key, pair.value.value);
+//                LogicDebug.debug("pair %s :%s", pair.key, pair.value.value);
 //                /*
 //                switch ((String)pair.value.value) {
 //                    case "unit": type = IBehaviorUnit.TYPE.UNIT; break;
@@ -69,7 +69,7 @@ public class BehaviorLoader {
 //        }
 //
 //        // unit process
-//        if (type == IBehaviorNode.TYPE.UNIT) {
+//        if (type == ILogicNode.TYPE.UNIT) {
 //            IBehaviorFunction behaviorfunc = entity.getBehaviorFunc(func);
 //            if (!(behaviorfunc instanceof IBehaviorFunction)) {
 //                return null;
@@ -79,22 +79,22 @@ public class BehaviorLoader {
 //        }
 //
 //        // list process
-//        ArrayList<IBehaviorNode> behaviorArrayList = new ArrayList<>();
+//        ArrayList<ILogicNode> behaviorArrayList = new ArrayList<>();
 //        for (Object obj : list) {
-//            IBehaviorNode unit = load(entity, (JsonLoader.JsonValue)obj);
+//            ILogicNode unit = load(entity, (JsonLoader.JsonValue)obj);
 //            if (unit == null) {
 //                continue;
 //            }
 //            behaviorArrayList.add(unit);
 //        }
-//        IBehaviorNode[] behaviorList = new IBehaviorNode[][behaviorArrayList.size()];
+//        ILogicNode[] behaviorList = new ILogicNode[][behaviorArrayList.size()];
 //        behaviorArrayList.toArray(behaviorList);
 //
 //        // generate behavior unit according to type
 //        switch (type) {
 //            /*
-//            case SEQUENCE: BehaviorDebug.debug("return sequence"); return new BehaviorSequence(behaviorList);
-//            case SELECTOR: BehaviorDebug.debug("return selector"); return new BehaviorSelector(behaviorList);
+//            case SEQUENCE: LogicDebug.debug("return sequence"); return new LogicSequence(behaviorList);
+//            case SELECTOR: LogicDebug.debug("return selector"); return new LogicSequence(behaviorList);
 //            case PARALLEL_SELECTOR: return new BehaviorParallelSelector(behaviorList);
 //            case PARALLEL_SEQUENCE: return new BehaviorParallelSequence(behaviorList);
 //            case PROBABILITY: return new BehaviorProbability(behaviorList, new float[behaviorList.length]);

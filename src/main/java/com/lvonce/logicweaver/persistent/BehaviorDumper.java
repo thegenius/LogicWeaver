@@ -1,15 +1,15 @@
 package com.lvonce.logicweaver.persistent;
 
-import com.lvonce.logicweaver.interfaces.IBehaviorNode;
+import com.lvonce.logicweaver.interfaces.ILogicNode;
 
 /**
  * Created by WangWei on 2017/3/16.
  */
 public class BehaviorDumper {
-    public static String dump(Object entity, IBehaviorNode unit) {
+    public static String dump(Object entity, ILogicNode unit) {
         /*
         IBehaviorUnit.TYPE type = unit.getType();
-        BehaviorDebug.incLevel();
+        LogicDebug.incLevel();
         String dumpString = "";
         switch (type) {
             case UNIT:
@@ -23,18 +23,18 @@ public class BehaviorDumper {
                 dumpString = "{ \"type\":\"sequence\", \"list\":[";
                 break;
             case PARALLEL_SELECTOR:
-                BehaviorDebug.debug("PARALLEL_SELECTOR");
+                LogicDebug.debug("PARALLEL_SELECTOR");
                 break;
             case PARALLEL_SEQUENCE:
-                BehaviorDebug.debug("PARALLEL_SEQUENCE");
+                LogicDebug.debug("PARALLEL_SEQUENCE");
                 break;
             case PROBABILITY:
-                BehaviorDebug.debug("PROBABILITY");
+                LogicDebug.debug("PROBABILITY");
                 break;
         }
 
         if (type != IBehaviorUnit.TYPE.UNIT) {
-            BehaviorList list = (BehaviorList)unit;
+            LogicList list = (LogicList)unit;
             for (int i=0; i<list.list.length; ++i) {
                 IBehaviorUnit u = list.list[i];
                 if (i!=0) {

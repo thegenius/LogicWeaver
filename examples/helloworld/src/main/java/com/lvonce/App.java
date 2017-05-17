@@ -1,12 +1,12 @@
 package com.lvonce;
 
-import com.lvonce.logicweaver.BehaviorDebug;
-import com.lvonce.logicweaver.concepts.BehaviorResult;
-import com.lvonce.logicweaver.interfaces.IBehaviorNode;
-import com.lvonce.logicweaver.interfaces.IBehaviorAction;
+import com.lvonce.logicweaver.LogicDebug;
+import com.lvonce.logicweaver.concepts.LogicResult;
+import com.lvonce.logicweaver.interfaces.ILogicNode;
+import com.lvonce.logicweaver.interfaces.ILogicAction;
 import com.lvonce.logicweaver.interfaces.IBehaviorExecutor;
 import com.lvonce.logicweaver.executors.BehaviorExecutor;
-import com.lvonce.logicweaver.annotations.BehaviorActionNode;
+import com.lvonce.logicweaver.annotations.LogicAction;
 import static com.lvonce.logicweaver.builders.BehaviorBuilder.*;
 
 public class App {
@@ -22,26 +22,26 @@ public class App {
 
 	static class Person {
 
-    	@BehaviorActionNode(index=1)
-    	public static IBehaviorAction<Person, PersonConfig> action1;
+    	@LogicAction(index=1)
+    	public static ILogicAction<Person, PersonConfig> action1;
 
-    	@BehaviorActionNode(index=2)
-    	public static IBehaviorAction<Person, PersonConfig> action2;
+    	@LogicAction(index=2)
+    	public static ILogicAction<Person, PersonConfig> action2;
 
     	static {
         	action1 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
-        	    BehaviorDebug.debug("action1(%s, %s)", config.x, config.y);
-            	return BehaviorResult.TRUE;
+        	    LogicDebug.debug("action1(%s, %s)", config.x, config.y);
+            	return LogicResult.TRUE;
         	};
 
         	action2 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
-            	BehaviorDebug.debug("action2(%s, %s)", config.x, config.y);
-            	return BehaviorResult.FALSE;
+            	LogicDebug.debug("action2(%s, %s)", config.x, config.y);
+            	return LogicResult.FALSE;
         	};
 		}
 	}
 	
-	static final IBehaviorNode logic = defineStart(Person.class)
+	static final ILogicNode logic = defineStart(Person.class)
         .genSequenceFalse(
                 genSequenceTrue(
                         genNode(Person.action1, new PersonConfig(1, "config1")),

@@ -2,7 +2,7 @@ package com.lvonce.logicweaver.persistent;
 
 import java.util.ArrayList;
 import java.math.BigDecimal;
-import com.lvonce.logicweaver.BehaviorDebug;
+import com.lvonce.logicweaver.LogicDebug;
 
 /**
  * Created by WangWei on 2017/3/16.
@@ -167,19 +167,19 @@ public class JsonLoader {
     }
 
     public static JsonPair loadPair(char[] chars, LoaderIndex index) throws UnexpectedCharException, UnexpectedString, UnknownTypeException {
-        //BehaviorDebug.incLevel();
-        //BehaviorDebug.debug("loadPair()");
+        //LogicDebug.incLevel();
+        //LogicDebug.debug("loadPair()");
         String keyName = (String)loadString(chars, index).value;
         eat(chars, ':', index);
         JsonValue value = loadValue(chars, index);
-        //BehaviorDebug.debug("pair: keyname:%s : value type:%s : %s", keyName, value.type.toString(), value.value);
-        //BehaviorDebug.decLevel();
+        //LogicDebug.debug("pair: keyname:%s : value type:%s : %s", keyName, value.type.toString(), value.value);
+        //LogicDebug.decLevel();
         return new JsonPair(keyName, value);
     }
 
     public static JsonValue loadObject(char[] chars, LoaderIndex index) throws UnexpectedCharException, UnexpectedString, UnknownTypeException {
-        //BehaviorDebug.incLevel();
-        //BehaviorDebug.debug("loadObject()");
+        //LogicDebug.incLevel();
+        //LogicDebug.debug("loadObject()");
         eat(chars, '{', index);
         skip(chars, index);
         ArrayList<JsonPair> members = new ArrayList<>();
@@ -191,13 +191,13 @@ public class JsonLoader {
             }
         }
         eat(chars, '}', index);
-        BehaviorDebug.decLevel();
+        LogicDebug.decLevel();
         return new JsonValue(new JsonObject(members));
     }
 
     public static JsonValue loadArray(char[] chars, LoaderIndex index)throws UnexpectedCharException, UnexpectedString, UnknownTypeException {
-        BehaviorDebug.incLevel();
-        BehaviorDebug.debug("loadArray()");
+        LogicDebug.incLevel();
+        LogicDebug.debug("loadArray()");
         eat(chars, '[', index);
         skip(chars, index);
         ArrayList<JsonValue> values = new ArrayList<>();
@@ -209,7 +209,7 @@ public class JsonLoader {
             }
         }
         eat(chars, ']', index);
-        BehaviorDebug.decLevel();
+        LogicDebug.decLevel();
         return new JsonValue(new JsonArray(values));
     }
 
