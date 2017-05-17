@@ -87,7 +87,7 @@ public class BehaviorExecutor implements IBehaviorExecutor {
         this.config = null;
         this.status = STATUS.IDLE;
         this.commandList = new ArrayList<Integer>();
-        recursiveBehaviorId(behavior);
+        //recursiveBehaviorId(behavior);
         buildTransferPath();
     }
 
