@@ -124,4 +124,23 @@ AND MAKE EVERYBODY HAPPY.
 ![status](https://raw.githubusercontent.com/thegenius/LogicWeaver/master/docs/status.jpg)
 
 
-## Basic API
+## Basic Usage
+```
+Global View
+1.Config class can be defined as any POJO.
+2.Entity class can be defined without any limit.
+3.Action node must be static IBehaviorAction type and annotated with BehaviorActionNode.
+4.Logic definition must begin with defineStart and end with defineFinish.
+5.Executor takes entity and logic as constructor parameters.
+
+Action View
+1.Action return BehaviorResult.TRUE to indicate success.
+2.Action return BehaviorResult.FALSE to indicate fail.
+3.Action return BehaviorResult.NULL to indicate ignore.
+4.Action return BehaviorResult.DISCARD to indicate stop and clear.
+5.Action return IBehaviorFunction to give an extra task.
+6.Action can call any function of the entity, because entity passed by the first parameter.
+7.Action can call functions on executor to affect the logic running flow.
+```
+
+
