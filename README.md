@@ -100,10 +100,10 @@ java -jar target/helloworld-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 ## Where amazing happens
 #### GUI Json Editor -> Json -> Logic Definition Class
-PM(production manager) | SE(software engineer) | QA(quality assurance)
-PM: edit the global loigc in a visual way and change it any time
-SE: implement the action node with simple and clear code
-QA: simply test the action node without worry about global logic
+PM(production manager) | SE(software engineer) | QA(quality assurance)  
+PM: edit the global loigc in a visual way and change it any time  
+SE: implement the action node with simple and clear code  
+QA: simply test the action node without worry about global logic  
 AND MAKE EVERYBODY HAPPY.
 
 ## Design Concepts
