@@ -90,6 +90,14 @@ public class App {
 	}
 }
 ```
+  
+You can run this simple example under examples directory:
+```bash
+cd examples/helloworld
+mvn packge
+java -jar target/helloworld-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+
 
 ## Design Concepts
 ![containers](https://raw.githubusercontent.com/thegenius/LogicWeaver/master/docs/containers.png)
