@@ -28,14 +28,14 @@ The most tedious part of software development must be the implementation of buss
 #### config -> action -> logic -> executor
 
 ```java
-import com.lvonce.logicweaver.BehaviorDebug;
-import com.lvonce.logicweaver.concepts.BehaviorResult;
-import com.lvonce.logicweaver.interfaces.IBehaviorNode;
-import com.lvonce.logicweaver.interfaces.IBehaviorAction;
-import com.lvonce.logicweaver.interfaces.IBehaviorExecutor;
-import com.lvonce.logicweaver.executors.BehaviorExecutor;
-import com.lvonce.logicweaver.annotations.BehaviorActionNode;
-import static com.lvonce.logicweaver.builders.BehaviorBuilder.*;
+import com.lvonce.logicweaver.LogicDebug;
+import com.lvonce.logicweaver.concepts.LogicResult;
+import com.lvonce.logicweaver.interfaces.ILogicNode;
+import com.lvonce.logicweaver.interfaces.ILogicAction;
+import com.lvonce.logicweaver.interfaces.ILogicExecutor;
+import com.lvonce.logicweaver.executors.LogicExecutor;
+import com.lvonce.logicweaver.annotations.LogicActionNode;
+import static com.lvonce.logicweaver.builders.LogicWeaver.*;
 
 public class App {
 
@@ -50,26 +50,26 @@ public class App {
 
 	static class Person {
 
-		@BehaviorActionNode(index=1)
-		public static IBehaviorAction<Person, PersonConfig> action1;
+		@LogicAction(index=1)
+		public static ILogicAction<Person, PersonConfig> action1;
 
-		@BehaviorActionNode(index=2)
-		public static IBehaviorAction<Person, PersonConfig> action2;
+		@LogicAction(index=2)
+		public static ILogicAction<Person, PersonConfig> action2;
 
 		static {
-			action1 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
-				BehaviorDebug.debug("action1(%s, %s)", config.x, config.y);
-				return BehaviorResult.TRUE;
+			action1 = (Person person, ILogicExecutor e, PersonConfig config)->{
+				LogicDebug.debug("action1(%s, %s)", config.x, config.y);
+				return LogicResult.TRUE;
 			};
 
-			action2 = (Person person, IBehaviorExecutor e, PersonConfig config)->{
-				BehaviorDebug.debug("action2(%s, %s)", config.x, config.y);
-				return BehaviorResult.FALSE;
+			action2 = (Person person, ILogicExecutor e, PersonConfig config)->{
+				LogicDebug.debug("action2(%s, %s)", config.x, config.y);
+				return LogicResult.FALSE;
 			};
 		}
 	}
 	
-	static final IBehaviorNode logic = defineStart(Person.class)
+	static final ILogicNode logic = defineStart(Person.class)
 		.genSequenceFalse(
 			genSequenceTrue(
 				genNode(Person.action1, new PersonConfig(1, "config1")),
@@ -85,7 +85,7 @@ public class App {
 
 	public static void main( String[] args ) {
 		Person person = new Person();
-		BehaviorExecutor executor = new BehaviorExecutor(person, logic);
+		LogicExecutor executor = new LogicExecutor(person, logic);
 		executor.run();
 	}
 }
@@ -129,16 +129,16 @@ AND MAKE EVERYBODY HAPPY.
 Global View
 1.Config class can be defined as any POJO.
 2.Entity class can be defined without any limit.
-3.Action node must be static IBehaviorAction type and annotated with BehaviorActionNode.
+3.Action node must be static ILogicAction type and annotated with LogicActionNode.
 4.Logic definition must begin with defineStart and end with defineFinish.
 5.Executor takes entity and logic as constructor parameters.
 
 Action View
-1.Action return BehaviorResult.TRUE to indicate success.
-2.Action return BehaviorResult.FALSE to indicate fail.
-3.Action return BehaviorResult.NULL to indicate ignore.
-4.Action return BehaviorResult.DISCARD to indicate stop and clear.
-5.Action return IBehaviorFunction to give an extra task.
+1.Action return LogicResult.TRUE to indicate success.
+2.Action return LogicResult.FALSE to indicate fail.
+3.Action return LogicResult.NULL to indicate ignore.
+4.Action return LogicResult.DISCARD to indicate stop and clear.
+5.Action return ILogicFunction to give an extra task.
 6.Action can call any function of the entity, because entity passed by the first parameter.
 7.Action can call functions on executor to affect the logic running flow.
 ```
